@@ -1,0 +1,33 @@
+#Posible solucion al ejercicio 34 de https://retosdeprogramacion.com/ejercicios/
+#Crea un función, que dado un año, indique el elemento 
+#* y animal correspondiente en el ciclo sexagenario del zodíaco chino.
+# * - Info: https://www.travelchinaguide.com/intro/astrology/60year-cycle.htm
+# * - El ciclo sexagenario se corresponde con la combinación de los elementos
+# *   madera, fuego, tierra, metal, agua y los animales rata, buey, tigre,
+# *   conejo, dragón, serpiente, caballo, oveja, mono, gallo, perro, cerdo
+# *   (en este orden).
+# * - Cada elemento se repite dos años seguidos.
+# * - El último ciclo sexagenario comenzó en 1984 (Madera Rata).
+
+def año_chino(año):
+  #Definimos el diccionario pero usamos los años como claves y los valores seran listas [animal, material]
+    año_chino = {
+    1924:["rata", "madera"], 1925:["buey", "madera"], 1926:["tigre", "fuego"], 1927:["conejo", "fuego"], 1928:["dragon", "tierra"],
+    1929:["serpiente", "tierra"], 1930:["caballo", "metal"], 1931:["cabra", "metal"], 1932:["mono", "agua"], 1933:["gallo", "agua"],
+    1934:["perro", "madera"], 1935:["cerdo", "madera"], 1936:["rata", "fuego"], 1937:["buey", "fuego"], 1938:["tigre", "tierra"],
+    1939:["conejo", "tierra"], 1940:["dragon", "metal"], 1941:["serpiente", "metal"], 1942:["caballo", "agua"], 1943:["cabra", "agua"],
+    1944:["mono", "madera"], 1945:["gallo", "madera"], 1946:["perro", "fuego"], 1947:["cerdo", "fuego"], 1948:["rata", "tierra"],
+    1949:["buey", "tierra"], 1950:["tigre", "metal"], 1951:["conejo", "metal"], 1952:["dragon", "agua"], 1953:["serpiente", "agua"],
+    1954:["caballo", "madera"], 1955:["cabra", "madera"], 1956:["mono", "fuego"], 1957:["gallo", "fuego"], 1958:["perro", "tierra"],
+    1959:["cerdo", "tierra"], 1960:["rata", "metal"], 1961:["buey", "metal"], 1962:["tigre", "agua"], 1963:["conejo", "agua"],
+    1964:["dragon", "madera"], 1965:["serpiente", "madera"], 1966:["caballo", "fuego"], 1967:["cabra", "fuego"], 1968:["mono", "tierra"],
+    1969:["gallo", "tierra"], 1970:["perro", "metal"], 1971:["cerdo", "metal"], 1972:["rata", "agua"], 1973:["buey", "agua"],
+    1974:["tigre", "madera"], 1975:["conejo", "madera"], 1976:["dragon", "fuego"], 1977:["serpiente", "fuego"], 1978:["caballo", "tierra"],
+    1979:["cabra", "tierra"], 1980:["mono", "metal"], 1981:["gallo", "metal"], 1982:["perro", "agua"], 1983:["cerdo", "agua"]
+}
+    #Si el año introducino no es una clave del diccionario
+    if año not in año_chino:
+        año = ((año - 1924) % 60) + 1924
+        
+    animal, material = año_chino[año]
+    return f"El año {año} se corresponde con\nAnimal: {animal}\nElemento: {material}"
