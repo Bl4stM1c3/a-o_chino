@@ -1,0 +1,89 @@
+#Posible solucion al ejercicio 34 de https://retosdeprogramacion.com/ejercicios/
+# Crea un función, que dado un año, indique el elemento 
+# * y animal correspondiente en el ciclo sexagenario del zodíaco chino.
+# * - Info: https://www.travelchinaguide.com/intro/astrology/60year-cycle.htm
+# * - El ciclo sexagenario se corresponde con la combinación de los elementos
+# *   madera, fuego, tierra, metal, agua y los animales rata, buey, tigre,
+# *   conejo, dragón, serpiente, caballo, oveja, mono, gallo, perro, cerdo
+# *   (en este orden).
+# * - Cada elemento se repite dos años seguidos.
+# * - El último ciclo sexagenario comenzó en 1984 (Madera Rata).
+
+
+def año_chino(año):
+  #Almacenamos la informacion en un diccionario donde el valor de las claves seran la lista [año, animal, material]
+    año_chino = {
+    1:[1924, "rata", "madera"],
+    2:[1925, "buey", "madera"],
+    3:[1926, "tigre", "fuego"],
+    4:[1927, "conejo", "fuego"],
+    5:[1928, "dragon", "tierra"],
+    6:[1929, "serpiente", "tierra"],
+    7:[1930, "caballo", "metal"],
+    8:[1931, "cabra", "metal"],
+    9:[1932, "mono", "agua"],
+    10:[1933, "gallo", "agua"],
+    11:[1934, "perro", "madera"],
+    12:[1935, "cerdo", "madera"],
+    13:[1936, "rata", "fuego"],
+    14:[1937, "buey", "fuego"],
+    15:[1938, "tigre", "tierra"],
+    16:[1939, "conejo", "tierra"],
+    17:[1940, "dragon", "metal"],
+    18:[1941, "serpiente", "metal"],
+    19:[1942, "caballo", "agua"],
+    20:[1943, "cabra", "agua"],
+    21:[1944, "mono", "madera"],
+    22:[1945, "gallo", "madera"],
+    23:[1946, "perro", "fuego"],
+    24:[1947, "cerdo", "fuego"],
+    25:[1948, "rata", "tierra"],
+    26:[1949, "buey", "tierra"],
+    27:[1950, "tigre", "metal"],
+    28:[1951, "conejo", "metal"],
+    29:[1952, "dragon", "agua"],
+    30:[1953, "serpiente", "agua"],
+    31:[1954, "caballo", "madera"],
+    32:[1955, "cabra", "madera"],
+    33:[1956, "mono", "fuego"],
+    34:[1957, "gallo", "fuego"],
+    35:[1958, "perro", "tierra"],
+    36:[1959, "cerdo", "tierra"],
+    37:[1960, "rata", "metal"],
+    38:[1961, "buey", "metal"],
+    39:[1962, "tigre", "agua"],
+    40:[1963, "conejo", "agua"],
+    41:[1964, "dragon", "madera"],
+    42:[1965, "serpiente", "madera"],
+    43:[1966, "caballo", "fuego"],
+    44:[1967, "cabra", "fuego"],
+    45:[1968, "mono", "tierra"],
+    46:[1969, "gallo", "tierra"],
+    47:[1970, "perro", "metal"],
+    48:[1971, "cerdo", "metal"],
+    49:[1972, "rata", "agua"],
+    50:[1973, "buey", "agua"],
+    51:[1974, "tigre", "madera"],
+    52:[1975, "conejo", "madera"],
+    53:[1976, "dragon", "fuego"],
+    54:[1977, "serpiente", "fuego"],
+    55:[1978, "caballo", "tierra"],
+    56:[1979, "cabra", "tierra"],
+    57:[1980, "mono", "metal"],
+    58:[1981, "gallo", "metal"],
+    59:[1982, "perro", "agua"],
+    60:[1983, "cerdo", "agua"]
+}
+
+    encontrado = False
+    for clave, datos in año_chino.items():
+        if datos[0] == año: #Buscamos si hay coincidencia entre el año introducido y el año correspondiente
+            encontrado = True
+            return f"El año {año} se corresponde con:\nAnimal: {datos[1]}\nElemento: {datos[2]}"
+            break
+    #Si no hay coincidencia calculamos el año equivalente que sí esta dentro de los 60 años estipulados en el diccionario
+    if not encontrado: 
+        año_equivalente = ((año - 1924) % 60) + 1924
+        for clave, datos in año_chino.items():
+            if datos[0] == año_equivalente:
+                return f"El año {año} se corresponde con:\nAnimal: {datos[1]}\nElemento: {datos[2]}"
